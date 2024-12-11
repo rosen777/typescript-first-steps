@@ -12,14 +12,12 @@ export default defineConfig({
             '@img': path.resolve(__dirname, './src/img'),
         }
     },
-
     build: {
         target: 'es2022'
     },
     server: {
         proxy: {
-            // '/api': 'http://localhost:5000/api',
-            '/api': 'https://146e-50-235-214-83.ngrok-free.app/api'
+            '/api': 'http:localhost:8080/api/'
         }
     }
 })
