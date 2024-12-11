@@ -21,8 +21,12 @@ export function setupThemeToggle() {
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         doc.setAttribute('data-theme', newTheme);
     }
-    document.getElementById('theme').addEventListener('click', toggleDarkMode);
+    const themeButton = document.getElementById('theme');
+    if (themeButton !== null) {
+        themeButton.addEventListener('click', toggleDarkMode);
+
+    }
 }
 
-
+``
 export default Header
