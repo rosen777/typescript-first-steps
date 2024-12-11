@@ -1,6 +1,8 @@
 # TypeScript First Steps
 
-Jump-start your TypeScript journey with this friendly, practical intro from Anjana Vakil.
+Jump-start your TypeScript journey with this friendly, practical introductory course by Anjana Vakil.
+
+_Watch the full video course on [FrontendMasters.com](https://frontendmasters.com/workshops/typescript-first-steps)_
 
 ## Overview
   This course will equip you with the key concepts & skills you’ll need to become proficient with the TypeScript language, and acquaint you with the production-grade tooling, workflows, and resources you’ll want to accelerate your productivity and career growth.
@@ -27,7 +29,8 @@ By taking this course, you'll:
 If any or all of those are true, this is the perfect course for you!
 
 ## Prerequisites:
-	- JavaScript: From First Steps to Professional or intermediate experience with JavaScript
+
+- [JavaScript: From First Steps to Professional](https://anjana.dev/javascript-first-steps) or intermediate experience with JavaScript
 	
 ## Outline: 
 
@@ -38,16 +41,13 @@ If any or all of those are true, this is the perfect course for you!
 - Setting up a TS project & basic dev workflow
 - Annotating variables & functions
 - Defining, exporting, and importing types
-- Lunch
 - Union types & type narrowing
 - Defining & extending interfaces 
 - Generic types & type parameters
-- Day 1 recap & next steps
-- TS configuration & full-stack workflows
 
 ### Part 2
 
-- Day 2 overview & Day 1 review
+- TS configuration & full-stack workflows
 - Testing & debugging TS apps
 - Validating data for end-to-end type safety
 - Open-source libraries for production-grade TS
