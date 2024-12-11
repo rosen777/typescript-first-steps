@@ -4,7 +4,12 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 const loadEventsData = async () => {
   try {
-    const response = await fetch(`${API_URL}/events`);
+    const response = await fetch(`${API_URL}/events`, {
+      method: "get",
+      headers: new Headers({
+        "ngrok-skip-browser-warning": "69420",
+      }),
+    });
     return response.json();
   } catch (e) {
     console.error(e);
