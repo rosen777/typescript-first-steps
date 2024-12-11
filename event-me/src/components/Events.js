@@ -103,7 +103,7 @@ export const EventsSection = (title, events) => {
 // https://developer.mozilla.org/en-US/docs/Glossary/IIFE
 export const Events = await (async () => {
   const all = await loadEventsData();
-  const past = all.filter((e) => (new Date(e.date) < new Date())); gd
+  const past = all.filter((e) => (new Date(e.date) < new Date()));
   const upcoming = all.filter((e) => (new Date(e.date) > new Date()));
   return `
     ${EventsSection('Upcoming', upcoming)}
