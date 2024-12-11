@@ -14,7 +14,7 @@ const render = (html) => {
   setupThemeToggle();
   setupModals();
   setupForms();
-}
+};
 
 
 render(`
