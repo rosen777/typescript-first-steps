@@ -3,7 +3,7 @@ import { Router } from 'express';
 import { getUser } from './users.js';
 const router = Router();
 const joinHost = (event) => {
-    const host = getUser(event.host_id);
+    const host = getUser(parseInt(event.host_id));
     return Object.assign(Object.assign({}, event), { host });
 };
 const joinRSVPs = (event) => {
@@ -15,14 +15,14 @@ const joinRSVPs = (event) => {
 const getEvent = (eventId) => {
     const byId = db.prepare('SELECT * FROM events WHERE id = @eventId');
     const event = byId.get({ eventId });
-    return joinHost(event);
+    return event && joinHost(event);
 };
 router.get('/', (_req, res) => {
     const listEvents = db.prepare(`SELECT * FROM events`);
     const events = listEvents.all();
     res.json(events.map(joinHost).map(joinRSVPs));
 });
-export const insertEvent = db.prepare(`INSERT INTO events VALUES (@id, @title, @description, @image_url, @date, @host_id)`);
+const insertEvent = db.prepare(`INSERT INTO events VALUES (@id, @title, @description, @image_url, @date, @host_id)`);
 router.post('/new', (req, res) => {
     const data = req.body;
     const { lastInsertRowid: id } = insertEvent.run(data);
