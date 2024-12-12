@@ -1,15 +1,18 @@
 import db from '../db.js';
 import { Router } from 'express';
 import { getUser } from './users.js';
+import type { Event, User } from '../db.js';
 
 const router = Router();
 
-const joinHost = (event) => {
-  const host = getUser(event.host_id);
-  return { ...event, host };
+type EventWithHost = Event & { host?: User }
+
+const joinHost = (event: Event) => {
+  const host = getUser(parseInt(event.host_id));
+  return { ...event, host } as EventWithHost;
 }
 
-const joinRSVPs = (event) => {
+const joinRSVPs = (event: Event) => {
   const { id } = event;
   const getRSVPs = db.prepare('SELECT * FROM rsvps WHERE event_id = @id');
   const rsvps = getRSVPs.all({ id });
@@ -19,18 +22,18 @@ const joinRSVPs = (event) => {
 
 const getEvent = (eventId: number | bigint) => {
   const byId = db.prepare('SELECT * FROM events WHERE id = @eventId');
-  const event = byId.get({ eventId });
-  return joinHost(event);
+  const event = byId.get({ eventId }) as Event | null;
+  return event && joinHost(event);
 }
 
 router.get('/', (_req, res) => {
   const listEvents = db.prepare(`SELECT * FROM events`)
-  const events = listEvents.all();
+  const events = listEvents.all() as Event[];
   res.json(events.map(joinHost).map(joinRSVPs));
 });
 
 
-export const insertEvent = db.prepare(`INSERT INTO events VALUES (@id, @title, @description, @image_url, @date, @host_id)`);
+const insertEvent = db.prepare(`INSERT INTO events VALUES (@id, @title, @description, @image_url, @date, @host_id)`);
 
 router.post('/new', (req, res) => {
   const data = req.body;
@@ -96,7 +99,6 @@ router.post('/:id/rsvp', (req, res) => {
     res.status(201).json({ rsvp });
   }
 });
-
 
 
 export default router;

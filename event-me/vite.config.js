@@ -10,6 +10,7 @@ export default defineConfig({
             '@': path.resolve(__dirname, './src'),
             '@components': path.resolve(__dirname, './src/components'),
             '@img': path.resolve(__dirname, './src/img'),
+            '@api': path.resolve(__dirname, '../event-me-api/src')
         }
     },
     build: {

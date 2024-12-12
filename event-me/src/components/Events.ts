@@ -1,6 +1,13 @@
 import { Calendar } from './Icons';
+import type { Event, User, Rsvp } from '@api/db';
 
 const API_URL = import.meta.env.VITE_API_URL;
+
+
+interface HostedEvent extends Event {
+  host?: User,
+  rsvps?: Rsvp[]
+}
 
 const loadEventsData = async () => {
   try {
@@ -17,7 +24,7 @@ const loadEventsData = async () => {
 }
 
 
-export const EventModal = (event) => {
+export const EventModal = (event: HostedEvent) => {
   const formId = `rsvp-form-${event.ID}`;
   const modalId = `modal-event-${event.id}`
   return `<dialog id="${modalId}">
@@ -57,7 +64,7 @@ export const EventModal = (event) => {
     </dialog>`
 }
 
-export const EventCard = (e) => {
+export const EventCard = (e: HostedEvent) => {
   const eventDate = new Date(e.date);
   const isPast = eventDate < new Date();
   return `
