@@ -2,7 +2,6 @@
 
 Jump-start your TypeScript journey with this friendly, practical intro from Anjana Vakil.
 
-_Watch the full video course on [FrontendMasters.com](https://frontendmasters.com/workshops/typescript-first-steps)_
 ### Links
 
 - Course materials: [anjana.dev/typescript-first-steps](https://anjana.dev/typescript-first-steps)
@@ -11,9 +10,11 @@ _Watch the full video course on [FrontendMasters.com](https://frontendmasters.co
 
 ### Slides
 
-1. [TS: Why & How](https://anjana.dev/typescript-first-steps/0.html)
-2. [Using TS for JS](https://anjana.dev/typescript-first-steps/1.html)
-3. [Language Features & Functionality](https://anjana.dev/typescript-first-steps/2.html)
+1. [TS: Why & How](./0.html)
+2. [Using TS for JS](./1.html)
+3. [Language Features & Functionality](./2.html)
+4. [Pro TS setups](./3.html)
+5. [Next steps with TS](./4.html)
 
 ## Overview
   This course will equip you with the key concepts & skills you’ll need to become proficient with the TypeScript language, and acquaint you with the production-grade tooling, workflows, and resources you’ll want to accelerate your productivity and career growth.
@@ -40,8 +41,7 @@ By taking this course, you'll:
 If any or all of those are true, this is the perfect course for you!
 
 ## Prerequisites:
-
-- [JavaScript: From First Steps to Professional](https://anjana.dev/javascript-first-steps) or intermediate experience with JavaScript
+	- JavaScript: From First Steps to Professional or intermediate experience with JavaScript
 	
 ## Outline: 
 
@@ -52,13 +52,16 @@ If any or all of those are true, this is the perfect course for you!
 - Setting up a TS project & basic dev workflow
 - Annotating variables & functions
 - Defining, exporting, and importing types
+- Lunch
 - Union types & type narrowing
 - Defining & extending interfaces 
 - Generic types & type parameters
+- Day 1 recap & next steps
+- TS configuration & full-stack workflows
 
 ### Part 2
 
-- TS configuration & full-stack workflows
+- Day 2 overview & Day 1 review
 - Testing & debugging TS apps
 - Validating data for end-to-end type safety
 - Open-source libraries for production-grade TS
