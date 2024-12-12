@@ -10,10 +10,12 @@
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true,
-        "declaration": true
+        "declaration": true,
+        "composite": true
     },
     "include": [
-        "./src/**/*"
+        "./src/**/*",
+        "./src/data/*.json"
     ],
     "exclude": [
         "node_modules",

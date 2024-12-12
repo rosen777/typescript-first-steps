@@ -7,6 +7,7 @@ const db: DB = new Database('src/sqlite.db', { verbose: console.log });
 
 export type Event = typeof EVENTS[number];
 export type User = typeof USERS[number];
+export type Rsvp = typeof RSVPS[number];
 
 
 console.log(`Initializing database: ${db.name} `);

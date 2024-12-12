@@ -1,4 +1,9 @@
 {
+  "references": [
+    {
+      "path": "../event-me-api/"
+    }
+  ],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
     /* Projects */
@@ -30,6 +35,9 @@
       "@*": [
         "src/*"
       ],
+      "@api/*": [
+        "../event-me-api/src/*"
+      ]
     }, /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
