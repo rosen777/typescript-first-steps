@@ -4,9 +4,9 @@ Jump-start your TypeScript journey with this friendly, practical intro from Anja
 
 ### Links
 
-- Course materials: [anjana.dev/typescript-first-steps](https://anjana.dev/typescript-first-steps)
-- Repo: [github.com/vakila/typescript-first-steps/event-me](https://github.com/vakila/typescript-first-steps/event-me)
-- [Course Project (JS Frontend): `/event-me`](https://github.com/vakila/typescript-first-steps/event-me) (`main` branch)
+- Course website: [anjana.dev/typescript-first-steps](https://anjana.dev/typescript-first-steps)
+- Repo: [github.com/vakila/typescript-first-steps](https://github.com/vakila/typescript-first-steps)
+- [Course Project (JS Frontend): `/event-me`](https://github.com/vakila/typescript-first-steps/tree/main/event-me) (`main` branch)
 
 ### Slides
 
