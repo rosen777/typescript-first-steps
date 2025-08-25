@@ -6,15 +6,7 @@ Jump-start your TypeScript journey with this friendly, practical intro from Anja
 
 - Course website: [anjana.dev/typescript-first-steps](https://anjana.dev/typescript-first-steps)
 - Repo: [github.com/vakila/typescript-first-steps](https://github.com/vakila/typescript-first-steps)
-- [Course Project (JS Frontend): `/event-me`](https://github.com/vakila/typescript-first-steps/tree/main/event-me) (`main` branch)
 
-### Slides
-
-1. [TS: Why & How](./0.html)
-2. [Using TS for JS](./1.html)
-3. [Language Features & Functionality](./2.html)
-4. [Pro TS setups](./3.html)
-5. [Next steps with TS](./4.html)
 
 ## Overview
   This course will equip you with the key concepts & skills you’ll need to become proficient with the TypeScript language, and acquaint you with the production-grade tooling, workflows, and resources you’ll want to accelerate your productivity and career growth.
@@ -41,30 +33,30 @@ By taking this course, you'll:
 If any or all of those are true, this is the perfect course for you!
 
 ## Prerequisites:
-	- JavaScript: From First Steps to Professional or intermediate experience with JavaScript
+
+- JavaScript: From First Steps to Professional or intermediate experience with JavaScript
 	
-## Outline: 
+## What we'll cover in this course: 
 
-### Part 1
+### TypeScript: What? Why? How?
 
-- Intro & course/project overview
-- JS vs. TS & the problems TS solves
-- Setting up a TS project & basic dev workflow
-- Annotating variables & functions
-- Defining, exporting, and importing types
-- Lunch
-- Union types & type narrowing
-- Defining & extending interfaces 
-- Generic types & type parameters
-- Day 1 recap & next steps
-- TS configuration & full-stack workflows
+- Types in JS & the problems TS solves
+- How TS & JS are related
+- Installing TS & setting up
+- Moving gradually from JS to TS
 
-### Part 2
 
-- Day 2 overview & Day 1 review
-- Testing & debugging TS apps
-- Validating data for end-to-end type safety
-- Open-source libraries for production-grade TS
-- Course recap & next steps
-	
+### Core TS concepts & syntax
+
+- Annotating types in TS files
+- Using primitive & built-in types (e.g. DOM)
+- Defining custom types & interfaces
+- Composing & manipulating types
+
+### Full-stack TS workflows
+
+- Configuring the TS compiler
+- Installing, importing & exporting types
+- Ensuring end-to-end type safety
+- Exploring the TS ecosystem
 
