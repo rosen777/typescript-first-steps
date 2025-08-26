@@ -1,22 +1,21 @@
-interface HasID {
-    id: number;
+type Id = number;
+interface HasId {
+    id: Id;
 }
-type ID = HasID['id'];
-interface EventDetails {
+interface User extends HasId {
+    username: string;
+    name: string;
+    email?: string;
+}
+interface Event extends HasId {
+    host_id: Id;
     title: string;
     date: Date;
     image_url?: string;
     description?: string;
 }
-interface Evente extends HasID, EventDetails {
-    host_id: ID;
-}
-interface User extends HasID {
-    username: string;
-    name: string;
-    email?: string;
-}
 declare function createUser(username: string, name: string, email?: string): User;
-declare function createEvent(host: User, eventDetails: EventDetails): Evente;
+type EventDetailsWithoutIds = Omit<Event, 'id' | 'host_id'>;
+declare function createEvent(host: User, eventDetails: EventDetailsWithoutIds): Event;
 export { createEvent, createUser };
 //# sourceMappingURL=compileMe.d.ts.map

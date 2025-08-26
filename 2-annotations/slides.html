@@ -293,8 +293,15 @@
 
 				```
 
-				
+				<!-- TODO expand -->
 
+				<!-- TODO 
+				
+				- using aliased types
+				- importing/exporting types?
+				- 
+				
+				-->
 
 				</textarea>
 			</section>
@@ -405,6 +412,28 @@
 
 					Make sure functions are returning the correct types of data, and fix any other problems you find!
 
+					--
+
+					### Step 4: Check & compile
+
+					`tsx` is designed to help us run TS code quickly...
+
+					...so it <span class="accent">doesn't</span> type check like `tsc`!
+
+					--
+
+					![Gif of Invader Zim shouting 'YOU LIE!'](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTEyZm5lb2FlM2VkNTMzMjFuOXNrM29sZ3h5amVjanI2M2twNDVsZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mvfjpubTc8hP2/giphy.gif)
+
+
+					--
+
+					Make sure the `.ts` code checks out with `tsc`:
+					
+					```zsh
+					tsc --strict typeMe.ts
+					```
+
+					What happens?
 
 
 

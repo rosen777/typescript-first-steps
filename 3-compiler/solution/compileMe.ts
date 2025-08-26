@@ -1,34 +1,29 @@
+type Id = number;
 
-interface HasID {
-    id: number;
+interface HasId {
+    id: Id;
 }
 
-type ID = HasID['id'];
+interface User extends HasId {
+    username: string;
+    name: string;
+    email?: string;
+};
 
 
-interface EventDetails {
+interface Event extends HasId {
+    host_id: Id,
     title: string,
     date: Date,
     image_url?: string,
     description?: string,
 }
 
-// Named 'Evente' to distinguish from DOM interface 'Event'
-interface Evente extends HasID, EventDetails {
-    // implement me!
-    host_id: ID,
-}
 
-interface User extends HasID {
-    username: string;
-    name: string;
-    email?: string;
-};
-
-const EVENTS: Evente[] = [];
+const EVENTS: Event[] = [];
 const USERS: User[] = [];
 
-function createNextId<T extends HasID>(data: T[]): ID {
+function createNextId<T extends HasId>(data: T[]): Id {
     const lastItem = data[data.length - 1];
     if (!lastItem) {
         return 1;
@@ -49,15 +44,21 @@ function createUser(username: string, name: string, email?: string): User {
     return user;
 }
 
-function createEvent(host: User, eventDetails: EventDetails): Evente {
-    const { date, ...details } = eventDetails;
+type EventDetailsWithoutIds = Omit<Event, 'id' | 'host_id'>;
+
+function createEvent(host: User, eventDetails: EventDetailsWithoutIds): Event {
+    const { date, title, image_url, description } = eventDetails;
     const eventDate = new Date(date);
-    const event: Evente = {
-        id: createNextId<Evente>(EVENTS),
+
+    const event: Event = {
+        id: createNextId<Event>(EVENTS),
         host_id: host.id,
         date: eventDate,
-        ...details,
+        title,
     };
+    if (image_url) { event.image_url = image_url };
+    if (description) { event.description = description };
+
     EVENTS.push(event);
     return event;
 }

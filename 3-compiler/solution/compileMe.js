@@ -24,14 +24,22 @@ function createUser(username, name, email) {
     return user;
 }
 function createEvent(host, eventDetails) {
-    const { date, ...details } = eventDetails;
+    const { date, title, image_url, description } = eventDetails;
     const eventDate = new Date(date);
     const event = {
         id: createNextId(EVENTS),
         host_id: host.id,
         date: eventDate,
-        ...details,
+        title,
     };
+    if (image_url) {
+        event.image_url = image_url;
+    }
+    ;
+    if (description) {
+        event.description = description;
+    }
+    ;
     EVENTS.push(event);
     return event;
 }

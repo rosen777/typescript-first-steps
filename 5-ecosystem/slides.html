@@ -57,449 +57,114 @@
     <div class="reveal">
         <div class="slides">
 
-            <!-- TODO everything -->
-
-            <section data-markdown data-separator-vertical="\n--\n">
-                <textarea data-template>
-
-                    ### Further steps toward Pro TS
-
-                    - Compiling TS to JS
-                    - Refining dev workflows
-                    - Testing types & validating data 
-                    - Fullstack type safety
-                    - Exploring the TS ecosystem
-
-                    --
-
-
-                    ### Goals
-
-                    - Better understand the TS compiler & its output
-                    - Configure TS for backend use cases
-                    - Use types for testing & data validation
-                    - Dip a toe into the deep ocean of open-source TS
-
-                    --
-
-                    ### Course Project (continued)
-
-                    We're going full-stack!
-
-                    - `event-me` > Vite frontend
-                    - `event-me-api`<span class=".mdi--arrow-right-bold"></span> > Express/Node backend
-
-
-
-                    --
-
-                    ### Ready?
-
-                    # Let's go!
-
-			
-				</textarea>
-            </section>
-
-
-
-            <section data-markdown data-separator-vertical="\n--\n">
-                <textarea data-template>
-				### Course Project:
-				
-				
-				<h2 class='accent'><a>event me!</a></h2>
-				
-				<a href="https://github.com/vakila/typescript-first-steps/tree/main/event-me" target="_blank">
-
-				[github.com/vakila/typescript-first-steps > event-me](https://github.com/vakila/typescript-first-steps/event-me)
-
-				</a>
-
-				--
-
-				This JS codebase has some bugs!
-
-				Let's try to find & fix them with TS!
-
-
-				--
-
-				### Setting up
-
-				- Install VSCode IDE: [code.visualstudio.com](https://code.visualstudio.com/)
-				- Clone/download the project repo: <br>
-					[github.com/vakila/typescript-first-steps/event-me](https://github.com/vakila/typescript-first-steps/event-me)
-				- Open the project in VSCode
-
-				```sh
-				git clone git@github.com:vakila/typescript-first-steps/event-me.git
-				cd event-me
-				code .
-				```
-				
-				--
-
-				### Install dependencies
-
-				```bash
-				npm install
-				```
-
-				### Run the dev server
-
-
-				```bash
-				npm run dev
-				```
-
-				### Open [localhost:5173](http://localhost:5173)
-
-				</textarea>
-            </section>
-
-
-
+            <!-- TODO ecosystem -->
 
 
             <section data-markdown data-separator-vertical="\n--\n">
                 <textarea data-template>
 
-				## Configuring TypeScript for your project
+                ### Types & Data Validation
 
-				```sh
-				npx tsc --init
-				```
-				
-				--
-
-				<h2> 
-				<a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html" target="_blank" title="tsconfig docs">
-				
-				`tsconfig.json`
-
-				</a>
-				</h2>
-
-				--
-
-				![Gif of man looking at woman's computer and asking "Is that some sort of code?"](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExazQ5M2V4MzFiM2F0aHQxcWprM2pjOXZ2Zmg5dWwzZ2YyMXZkejdjNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SSM6HdOicCahnOZ5hM/giphy.webp)
-
-				--
-				
-				
-				```json 
-				{
-					"compilerOptions": {
-					  /* Visit https://aka.ms/tsconfig 
-					  to read more about this file */
-					}
-				}
-				```
-
-				--
-
-				```json
-				/* Modules */
-				"module": "ESNext",
-				"rootDir": "./",                                  
-				"moduleResolution": "bundler", 
-				"baseUrl": "./",
-				"paths": {
-					"@*": [
-						"src/*"
-					],
-				},
-				```
-
-				--
-
-				```json
-				/* JavaScript Support */
-				"allowJs": true, 
-				"checkJs": true, 
-
-				/* Output options */
-				"noEmit": true,
-				```
-
-				--
-
-				```sh
-				npx tsc
-				```
-
-				```json
-				"scripts": [
-					"check": "tsc"
-				]
-				```
-
-				--
-
-				![Simpsons gif "I won't be needing this [green pen, only red]"](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDU5ajh5bGF4YXZ0YmRqZXF0amFhNzlueHF6ZWg4Mmw5dm0yeHl4eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6Mb65G4Xjv5j0VGw/giphy.webp)
-
-				--
-
-				### We need moar types!
-
-				[Vite](https://vitejs.dev) app uses [Node](https://nodejs.org) to build the site
+                ![Gif of a woman putting on a bicycle helmet with the text "safety first"](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2owZjZ1ZW54cmgzbDRjdWg4YjFybHI2ejNyYmhkNGl0b2JmdXVldSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ppcPOCojxincokmTjp/giphy.webp)
 
 
-				```json
-				"types": [
-					"vite/client"
-				],
-				```
+                --
+
+                ### "end-to-end type safety"
+
+                ![Gif of Jeff Goldblum blinking rapidly and asking "What does that mean?"](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExemoyZXVzaTAzaGNlZ2pjNXQzcG9kMmp6eGM0bjMwcWQ1anZnM3IzcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BQPdUGNQlvH8GL8oVU/giphy.webp)
+
+                --
+
+                <a href="https://imgflip.com/i/9dj4e4"><img src="https://i.imgflip.com/9dj4e4.jpg" title="made at imgflip.com" alt='Handshake meme labeled "frontend" on one muscly arm, "backend" on the other, and "shared type-aware schema" on their handshake'/></a>
+
+            
+            
+
+                --
+
+                ### [zod.dev](https://zod.dev)
+
+                                
+                ```sh
+                npm i zod
+                ```
+
+            
+                _"TS-first schema validation with static type inference"_
 
 
-				```sh
-				npm i -D @types/node 
-				```
-
-				--
-
-				Now let's go bug hunting!
-
-				![Gif of a bug flying and being caught by a hand](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHk5NmdzMDg1bDR5NHdtNnc2eHFqdHJyaWp1b3Y3eHZ0MW04Y2R1cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/I3uGzDeKjm7J21MoRN/giphy.webp)
-
-
-				</textarea>
-            </section>
-
-
-
-
-            <section data-markdown data-separator-vertical="\n--\n">
-                <textarea data-template>
-
-                    <!-- TODO 
-                     
-                        - What is a compiler? 
-                            - Interpreted vs. Compiled langs 
-                            - Compile-time vs. Run-time 
-                            - Inputs (.ts) and outputs (.js)
-                                            
-                    -->
-
-                    ## Compiling TS
-
-                    <div style="display: flex; justify-content: space-evenly; align-items: center;">
-                        <a title="™/®Microsoft, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Typescript_logo_2020.svg">
-                            <img width="256" alt="Typescript logo 2020" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/256px-Typescript_logo_2020.svg.png?20221110153201" 
-                            />
-                        </a>
-                        <span 
-                            class="mdi--arrow-right-bold" 
-                            style="width: 128px; height: 128px;">
-                        </span>
-                        <a title="Christopher Williams, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:JavaScript-logo.png">
-                            <img width="256" alt="JavaScript-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/256px-JavaScript-logo.png?20120221235433"  style="border-radius: 20px;"/>
-                        </a>
-                    </div>
-
-
-                    --
-
-                    ```sh
-                    cd event-me-api
-                    npm i
-                    npm run build
-                    ```
-
-                    ```json
-                    "scripts" : {
-                        // ...
-                        "build": "tsc & vite build"
-                    }
-                    ```
-
-                    --
-
-
-                    ### Squiggle alert!
-
-                    Let's tackle these backend type errors so the code compiles!
-
-                    `src/routes/events.ts`
+                - Provides typed objects to define data schemas
+                - Checks that data has that shape, _at runtime_ in JS
+                - Lets TS infer the matching type(s)
+    
+                --
                 
-                    --
+                ### Declaring a Schema
+
+                ```ts
+                import { z } from "zod";
+
+                const User = z.object({
+                    username: z.string(),
+                });
+                ```
+
+                --
+
+                ### Validating data
+
+                ```ts
+                // throws an error if the data
+                // doesn't match the schema
+                User.parse({ username: "Ludwig" });
+                ```
+
+                --
+
+                ### Inferring TS type(s)
+
+                ```ts
+                // extract the inferred type
+                type User = z.infer<typeof User>; // { username: string }
+                ```
 
 
-                    ### Exporting/Importing types
-
-                    ```ts
-                    // db.ts
-                    export type User = //...
-                    ```
-
-                    ```ts
-                    // routes/events.ts
-                    import type {User} from '../db';
-
-                    const u: User = //...
-                    ```
-                    
-
-                    --
-
-                    ### Exploring the compiler output
-
-                    Let's a peek at the `dist/` dir that `tsc` generated
-
-                    Try messing with the `target` value...
-                    Notice any differences in the output?
-
-
-                    --
-
-                    ### Compilers & Configs & Choices, oh my!
-
-                    How should I configure the tsconfig for my project?
-
-                    [TS Handbook >> Choosing Compiler Options](https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html)
-
-
-                    --
-
-                    ### `tsconfig` Bases
-                    [github.com/tsconfig/bases](https://github.com/tsconfig/bases)
-                    
-                    Starter configs for various use cases
-
-                    "DefinitelyTyped for TSConfigs"
-
-                    --
-
-                    ### Using & extending bases
-
-
-                    ```sh
-                    npm i -D @tsconfig/recommended
-                    ```
-
-                    ```json
-                    // ./tsconfig.json
-                    {
-                        "extends": "@tsconfig/recommended/tsconfig.json", 
-                        "compilerOptions": {
-                            // ....
-                        }
-                    }
-                    ```
-
-                    
                 </textarea>
             </section>
-
             <section data-markdown data-separator-vertical="\n--\n">
                 <textarea data-template>
 
-                    ### Types & Data Validation
+                ## Type-aware Tests
 
-                    ![Gif of a woman putting on a bicycle helmet with the text "safety first"](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2owZjZ1ZW54cmgzbDRjdWg4YjFybHI2ejNyYmhkNGl0b2JmdXVldSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ppcPOCojxincokmTjp/giphy.webp)
+                [vitest.dev/guide/testing-types](https://vitest.dev/guide/testing-types)
 
+                ```sh
+                npm i -D vitest
+                ```
 
-                    --
+                --
 
-                    ### "end-to-end type safety"
+                ```ts
+                import { expectTypeOf } from 'vitest';
+                import myFn from './myFunction';
+                import MyType from './sharedSchema';
 
-                    ![Gif of Jeff Goldblum blinking rapidly and asking "What does that mean?"](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExemoyZXVzaTAzaGNlZ2pjNXQzcG9kMmp6eGM0bjMwcWQ1anZnM3IzcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BQPdUGNQlvH8GL8oVU/giphy.webp)
+                test('my types work properly', () => {
+                    expectTypeOf(myFn).toBeFunction();
+                    expectTypeOf(myFn).not.toBeAny();
+                    expectTypeOf(myFn).parameter(0).toMatchTypeOf<MyType>(); 
+                });
 
-                    --
+                ```
 
-                    <a href="https://imgflip.com/i/9dj4e4"><img src="https://i.imgflip.com/9dj4e4.jpg" title="made at imgflip.com" alt='Handshake meme labeled "frontend" on one muscly arm, "backend" on the other, and "shared type-aware schema" on their handshake'/></a>
+                --
 
-                    --
+                ### Tons of helpful TS libs out there!
 
-                    ### Full-stack typing
-
-                    [TS Handbook >> Project References](https://www.typescriptlang.org/docs/handbook/project-references.html)
-
-                    - Export data types from `event-me-api` modules
-                    - Configure TS to link `event-me-api` & `event-me`
-                    - Import data types into `event-me` modules
-                
-
-                    --
-
-                    ### [zod.dev](https://zod.dev)
-
-                                 
-                    ```sh
-                    npm i zod
-                    ```
-
-                
-                    _"TS-first schema validation with static type inference"_
-
-
-                    - Provides typed objects to define data schemas
-                    - Checks that data has that shape, _at runtime_ in JS
-                    - Lets TS infer the matching type(s)
-       
-                    --
-                    
-                    ### Declaring a Schema
-
-                    ```ts
-                    import { z } from "zod";
-
-                    const User = z.object({
-                        username: z.string(),
-                    });
-                    ```
-
-                    --
-
-                    ### Validating data
-
-                    ```ts
-                    // throws an error if the data
-                    // doesn't match the schema
-                    User.parse({ username: "Ludwig" });
-                    ```
-
-                    ### Inferring TS type(s)
-
-                    ```ts
-                    // extract the inferred type
-                    type User = z.infer<typeof User>; // { username: string }
-                    ```
-
-
-                    --
-
-
-
-                    ## Type-aware Tests
-
-                    [vitest.dev/guide/testing-types](https://vitest.dev/guide/testing-types)
-
-                    ```sh
-                    npm i -D vitest
-                    ```
-
-                    ```ts
-                    import { expectTypeOf } from 'vitest';
-                    import myFn from './myFunction';
-                    import MyType from './sharedSchema';
-
-                    test('my types work properly', () => {
-                        expectTypeOf(myFn).toBeFunction();
-                        expectTypeOf(myFn).not.toBeAny();
-                        expectTypeOf(myFn).parameter(0).toMatchTypeOf<MyType>(); 
-                    });
-
-                    ```
-
-                    --
-
-                    ### Tons of helpful TS libs out there!
-
-                    These are just some popular examples
-              
-                    Check out [github.com/dzharii/awesome-typescript](https://github.com/dzharii/awesome-typescript)
+                These are just some popular examples
+            
+                Check out [github.com/dzharii/awesome-typescript](https://github.com/dzharii/awesome-typescript)
 
 
 

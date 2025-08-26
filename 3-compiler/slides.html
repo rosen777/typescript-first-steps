@@ -107,11 +107,7 @@
 
 			<!-- TODO define "type safe"  MOVE -->
 
-			<!-- TODO type inference -->
 
-			<!-- TODO inputs/outputs -->
-
-			<!-- TODO target/lib -->
 
 			<!-- TODO type imports -->
 
@@ -122,35 +118,252 @@
 
 				## TS & JS: BFFs
 
-				<!-- TODO handshake meme -->
-
-				<div style="position: relative; width: 80%; height: 0; padding-top: 70.0000%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin: 0px auto; overflow: hidden; border-radius: 8px; will-change: transform;">
-					<iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-						src="https://www.canva.com/design/DAGw8WSALhE/HEtvMHeQnPSFoFT41sQo_w/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-					</iframe>
-				</div>
+				<a href="https://imgflip.com/i/a44p69"><img src="https://i.imgflip.com/a44p69.jpg" title="Epic Handshake meme with TS & JS united as JS, via imgflip.com"/></a>
 
 				--
 
 
-				### 
+
+				<a href="https://imgflip.com/i/a44poi"><img src="https://i.imgflip.com/a44poi.jpg" title="Diagram showing TS as superset of JS with text 'TS turns into JS' and arrows indicating that when we compile TS to JS, the types are removed"/></a>
+
+				--
+
+
+				### Compiling TS to JS
+
+				<div style="text-anchor: middle;">
+
+				`file.ts` 
+				<span 
+				class="mdi--arrow-right-bold" 
+				style="width: 1em; height: 1em;"></span> 
+				<span class='accent' style="font-size: 2em;">`tsc`</span>
+				<span 
+				class="mdi--arrow-right-bold" 
+				style="width: 1em; height: 1em;"></span>
+				`file.js`
+
+				</div>
+
+
+				--
+
+				Earlier, we ran this command: 
+
+				```zsh
+				tsc --checkJs --noEmit --strict checkMe.js
+				```
+
+				What do those all those flags do exactly??
+
+				--
+
+				flag | tells compiler to
+				--- | ---
+				`--checkJs` | look at `.js` files (default: `.ts` only)
+				`--strict` | be more nitpicky
+				`--noEmit`| ???
+
+				--
+
+				### Emitted files
+
+				In the last exercise, we ran: 
+
+				`tsc typeMe.ts`
+
+				This compiled our TS to JS and _emitted_ a new file `typeMe.js`
+				
+				--
+
+				### Inputs & outputs
+
+				option | Inputs | Outputs
+				--- | --- | ---
+				(default) | `.ts` | `.js` 
+				`--checkJs` | `.ts` & `.js` | `.js` 
+				`--noEmit` | `.ts` | nothing!
+
+				
+
+				--
+
+				### Into the JS multiverse
+
+				![Gif of various incarnations of Michelle Yeoh in 'Everything Everwhere All At Once'](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExc202cTM2MGVuY3BjZ2Z6dm5yeXRtdHIzNGg3a3Y2NXZjYTNscmNtdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/aI2hfQOnxm5mwh9edQ/giphy.gif)
+
+
+				--
+
+				What do you notice about the emitted `typeMe.js`? 
+
+				Try rerunning the command with this flag: 
+
+				```zsh
+				tsc --target es2020 typeMe.ts
+				```
+
+				What do you notice now? 
+
+				--
+
+				### Compiler Targets
+
+
+				`tsc` _targets_ a particular version of JS for its output
+
+				target | compiled code runs in
+				--- | --- 
+				`es5` (default) | older browsers 
+				`es6`/`es2015` | most browsers
+				`esnext` | newest hottest browsers
+
+				--
+
+				### Fine-tuning emitted JS 
+
+				Other options give us even more control what ends up in the emitted JS, for example: 
+
+				```zsh
+				tsc --removeComments typeMe.ts
+				```
+				
+				--
+				
+
+
+				### Compiler Options
+
+				Our collection of `tsc` flags is growing! 
+
+				`--strict`
+
+				`--checkJs`
+
+				`--noEmit`
+
+				`--target <version>`
+
+				`--removeComments`
+
+				--
+
+				![Image from Jaws with text "We're gonna need a bigger command line"](https://i.imgflip.com/a452j8.jpg)
+
 
 				</textarea>
 
 			</section>
 
+			<section data-markdown data-separator-vertical="\n--\n">
+				<textarea data-template>
+
+				## `tsconfig.json`
+
+
+				--
+
+				### Exercise time!
+					
+				[`3-compiler/exercise/README.md`](#/3/1) <!-- TODO link -->
+
+				```zsh
+				cd 3-compiler/exercise/
+				```
+
+				--
+
+
+				### Step 1: Install deps & run tests
+
+				```zsh
+				npm i
+				```
+
+				```zsh
+				npm run test
+				```
+
+				We have some work to do to get these tests passing!
+
+				--
+
+				### Step 2: Setup TypeScript
+
+
+				Install TS as a dev dependency:
+
+				```zsh
+				npm i -D typescript
+				``` 
+
+				--
+
+				Add a `compile` script in `package.json`: 
+
+				```json
+				"scripts": {
+					"test": "vitest",
+					"compile": "tsc"
+				},
+				```
+
+				--
+
+				What happens when you run `npm run compile`?
+
+				--
+
+				### Step 3: Create `tsconfig.json`
+
+				```zsh
+				tsc --init
+				```
+
+				Read through the config file. What do you notice? 
+
+				--
+
+				Now try compiling again: 
+				
+				```zsh
+				npm run compile
+				```
+
+				--
+
+				![Image from Jaws with text "We're gonna need a bigger directory"](https://i.imgflip.com/a45g0q.jpg)
+
+				--
+
+				option | emits | used for e.g.
+				--- | --- | ---
+				`declaration` | `.d.ts` | intellisense
+				`declarationMap` | `.d.ts.map` | 'Go to definition'
+				`sourceMap` | `.js.map` | debugging
+
+				_disable these options if you want!_
+
+				--
+
+				### Rerun the tests
+
+				```zsh
+				npm run test
+				```
+
+				...now let's get them passing!
+
+				</textarea>
+			</section>
 
 
 			<section data-markdown data-separator-vertical="\n--\n">
 				<textarea data-template>
 
-					## Types, types, and more types
+					## Fancy types
 
-					<!-- TODO img -->
-
-					--
-
-					<!-- TODO type inference -->
+					![Gif of Iggy Azalea flipping her hair in 'Fancy' video](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExangxdHoxa3N4dWhvcGlpbGFyNGNuM3l2MGliaHh0eThhejllNWhrcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5xtDarIrYGL6LGhg6sg/giphy.gif)
 
 					--
 
@@ -202,6 +415,24 @@
 					
 					--
 
+					### Async code 
+
+					```ts
+					function wave(): string {
+						return ":wave:";
+					}
+					async function asyncWave(): Promise<string> {
+						return ":wave:";
+					}
+					
+					const waveString = wave();
+					const wavePromise = asyncWave();
+					
+					waveString.length;	// 6				
+					wavePromise.length; // Error!
+					```
+
+					--
 					
 					
 
@@ -235,29 +466,92 @@
 
 					--
 
-					<!-- --
-
-
-					### Index access for subtypes
-
-					```ts
-					type NameOrNot = User["fullname"];
-					// not User[fullname] or User.fullname
-
-					const yesName: NameOrNot = 'Frontend Masters'; // OK!
-					const noName: NameOrNot = undefined; // OK!
-					const errorName: NameOrNot = null; // Error!
-					``` -->
+					### Builtin utility types
 					
+					`Readonly<T>`
+						
+					`Partial<T>`
+
+					`Pick<T>`
+							
+					`Omit<T>`
+
+					...and [many more!](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+								
+
 					--
 
-					<!-- TODO typeof -->
-					<!-- TODO keyof -->
 
-					<!-- TODO utility types (Partial, Readonly, ReturnType) -->
+					```ts
+					const editable: User = { username: 'fornow', id: 1 };
+					editable.username; // 'fornow'
+					editable.username = 'nomore' // OK
+
+					const fixed: Readonly<User> = { username: 'forever', id: 2 }
+					fixed.username; // 'forever';
+					fixed.username = 'wontwork'; // Error!
+					```
+
+					--
+
+					```ts
+					const noId: Partial<User> = { username: 'noid' };
+					const noUsername: Partial<User> = { id: 1 };
+					const allOk: Partial<User> = { username: 'ok', id: 2};
+					const noneOk: Partial<User> = {};
+					const notOk: Partial<User> = {invalid: 'property'}; // Error!
+					```
+					--
+
+					```ts
+					const batman: Human = {username: 'batman', id: 2, fullname: 'Bruce Wayne'
+					};
+					const justId: Pick<Human, 'id'> = { id: 3 };
+					const justNames: Pick<Human, 'username' | 'fullname'> = {username: 'catwoman', fullname: 'Selina Kyle' };
+					const wontWork: Pick<Human, 'fullname'> = {fullname: 'Alfred Pennyworth', id: 4};
+					```
+
+					--
+
+					```ts
+					const noUname: Omit<Human, 'username'> = {
+						fullname: 'Alfred Pennyworth', 
+						id: 4
+					};
+					const onlyUname: Omit<Human, 'id' | 'fullname'> = {
+						username: 'butler',
+					};
+					const equivalent: Pick<Human, 'username'> = onlyUname;
+					```
 				
 				</textarea>
 			</section>
+
+
+			<section data-markdown data-separator-vertical="\n--\n">
+				<textarea data-template>
+
+				### Back to our exercise!
+
+				Let's get to work getting it to work!
+
+				--
+
+				## Step 4: Fix the code!
+
+				Add missing type info to `compileMe.ts` so that:
+
+				- all tests pass
+				- TS compiles without errors
+
+
+
+				</textarea>
+			</section>
+
+
+
+
 
 			<section data-markdown data-separator-vertical="\n--\n">
 				<textarea data-template>

@@ -84,3 +84,17 @@ Make sure functions are returning the correct types of data, and fix any other p
 
 Compare your solution to the reference in the `solution/` directory, keeping in mind that there may be other ways to fix these errors.
 
+
+## Step 4: Check & compile
+
+Since `tsx` is designed to let us run our TS code quickly during development, it _doesn't_ type check like `tsc`!
+
+So let's make sure our (fixed, running) TS code checks out with `tsc`:
+
+```zsh
+tsc --strict typeMe.ts
+```
+
+If you run into any errors, fix them!
+
+What happens once `tsc` runs without errors? (hint: you'll see a new file!)

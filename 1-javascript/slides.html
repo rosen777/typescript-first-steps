@@ -368,7 +368,7 @@
 
 
 					```zsh
-					tsc --checkJS --noEmit checkMe.js
+					tsc --checkJs --noEmit checkMe.js
 					```
 
 					What errors does TS find? 
@@ -377,7 +377,7 @@
 
 
 					```zsh
-					tsc --checkJS --noEmit --strict checkMe.js
+					tsc --checkJs --noEmit --strict checkMe.js
 					```
 
 					What errors are reported now?
@@ -386,9 +386,9 @@
 
 					## Step 3: Fix the errors
 
-					Edit `checkMe.js` to fix the errors that TS found. 
+					Edit `checkMe.js` to fix the errors
 
-					Run the typechecker on your solution to ensure that no more errors are found, even with `--strict`.
+					Run `tsc` with `--strict` to check your solution
 
 
 

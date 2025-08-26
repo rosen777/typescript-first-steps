@@ -28,7 +28,7 @@ This should print `Version 5.9.2` or similar, if TS was successfully installed.
 Run the `tsc` compiler on `checkMe.js` with these optional settings:
 
 ```zsh
-tsc --checkJS --noEmit checkMe.js
+tsc --checkJs --noEmit checkMe.js
 ```
 
 What errors does TS find? 
@@ -36,7 +36,7 @@ What errors does TS find?
 Now try running the typechecker again, but with the `--strict` option:
 
 ```zsh
-tsc --checkJS --noEmit --strict checkMe.js
+tsc --checkJs --noEmit --strict checkMe.js
 ```
 
 What errors are reported now?
