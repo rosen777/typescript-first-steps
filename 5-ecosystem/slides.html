@@ -59,13 +59,153 @@
 
             <!-- TODO ecosystem -->
 
+            <section data-markdown data-separator-vertical="\n--\n">
+                <textarea data-template>
+
+                ### Back to the backend!
+
+                ![Tyra Banks 'but then make it fashion' meme with TS logo](https://i.imgflip.com/a49tin.jpg)
+
+                --
+
+                - Install TS in the backend project
+                - Create a `tsconfig.json` that extends from appropriate base(s)
+                - Rename the `.js` files to `.ts`
+                - Enable the `noEmit` option in `tsconfig.json`
+                - Run `tsc`
+                
+
+                --
+
+
+                ![Christopher Walken cowbell meme, but make it types](https://i.imgflip.com/a49u6h.jpg)
+
+
+                --
+
+                ### Types for non-TS deps
+
+
+                [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) FTW!
+
+                Community-maintained, npm-installable type declarations for popular JS packages that don't ship their own
+
+                --
+
+                e.g. to install types for Node:
+
+                ```sh
+                npm i -D @types/node
+                ```
+
+                --
+
+                ### Install all the types!
+
+                ![Clean all the things meme](https://imgflip.com/s/meme/X-All-The-Y.jpg)
+
+                --
+
+                Install missing `@types/` packages for package dependencies
+
+                `npm i -D @types/<packageName>`
+
+                e.g. for `express`: `@types/express`
+
+
+                --
+
+                Define the missing custom types to fix the errors!
+
+                --
+
+                
+                ### Type assertions with `as`
+
+
+                ```ts
+                const maybeAnyElement = document.getElementById('my-button');
+                const iSwearThisBtnExists =  possibleHTMLElement as HTMLButtonElement;
+                ```
+
+                --
+
+                ![Image of Austin Powers with text "I see you're using type assertions" "I too like to live dangerously"](https://i.imgflip.com/a4a0q4.jpg)
+
+
+
+
+                </textarea>
+            </section>
+
 
             <section data-markdown data-separator-vertical="\n--\n">
                 <textarea data-template>
 
-                ### Types & Data Validation
+                ### Sharing types
+
+                <!-- TODO gif  -->
+
+                --
+
+
+                ### Type-only imports in `.ts` files
+
+                ```ts
+                import { actualValue, type JustType } from 'values.ts';
+                ```
+
+                ```ts
+                import type { OneType, AnotherType } from 'types.js'
+                ```
+
+                --
+
+
+                ### Exporting types for reuse
+
+
+                ```ts
+                // bananas.ts
+                export type Banana = 'banana';
+                export type Plantain = 'plantain';
+                ```
+
+                ```ts
+                // apples.ts
+                type Apple = 'pink lady' | 'red delicious';
+                const myApples: Apple[] = [];
+                export { myApples, type Apple };
+                ```
+
+                --
+
+                ```ts
+                // fruits.ts
+                import type { Banana, Plantain } from 'bananas';
+                import { myApples, type Apple } from 'apples';
+
+                const fruit: Banana | Apple = 'banana';
+                ```
+            
+            
+                --
+
+                
+           
+
+                </textarea>
+            </section>
+
+            <section data-markdown data-separator-vertical="\n--\n">
+                <textarea data-template>
+
+                ### Type Safety
 
                 ![Gif of a woman putting on a bicycle helmet with the text "safety first"](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2owZjZ1ZW54cmgzbDRjdWg4YjFybHI2ejNyYmhkNGl0b2JmdXVldSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ppcPOCojxincokmTjp/giphy.webp)
+
+
+
 
 
                 --
@@ -76,27 +216,32 @@
 
                 --
 
-                <a href="https://imgflip.com/i/9dj4e4"><img src="https://i.imgflip.com/9dj4e4.jpg" title="made at imgflip.com" alt='Handshake meme labeled "frontend" on one muscly arm, "backend" on the other, and "shared type-aware schema" on their handshake'/></a>
+                ![Handshake meme labeled "frontend" on one muscly arm, "backend" on the other, and "shared types" on their handshake](https://i.imgflip.com/a4a51w.jpg)
 
             
-            
+
+                </textarea>
+            </section>
+
+            <section data-markdown data-separator-vertical="\n--\n">
+                <textarea data-template>
+
+
+
+                ### Data Validation
+                
+                Using TS types
+
+                [zod.dev](https://zod.dev)
+
+                _"TS-first schema validation with static type inference"_
 
                 --
 
-                ### [zod.dev](https://zod.dev)
-
-                                
-                ```sh
-                npm i zod
-                ```
-
-            
-                _"TS-first schema validation with static type inference"_
-
 
                 - Provides typed objects to define data schemas
-                - Checks that data has that shape, _at runtime_ in JS
-                - Lets TS infer the matching type(s)
+                - Checks that data has that shape at _runtime_ in JS
+                - Lets TS infer corresponding type(s) at _compile time_
     
                 --
                 
@@ -129,6 +274,9 @@
                 type User = z.infer<typeof User>; // { username: string }
                 ```
 
+                --
+
+                
 
                 </textarea>
             </section>

@@ -96,23 +96,6 @@
 					</textarea>
 			</section>
 
-			<!-- TODO 
-				- Understand how TS compiles to JS
-				- Take advantage of the compiler's type inference
-				- Compose types with interfaces & generics
-				- Tell the compiler to hush when you know better 
-				- Specify compiler settings with `tsconfig.json`
-
-			-->
-
-			<!-- TODO define "type safe"  MOVE -->
-
-
-
-			<!-- TODO type imports -->
-
-			<!-- TODO type declarations?  -->
-
 			<section data-markdown data-separator-vertical="\n--\n">
 				<textarea data-template>
 
@@ -351,6 +334,8 @@
 
 
 
+
+
 			<section data-markdown data-separator-vertical="\n--\n">
 				<textarea data-template>
 
@@ -524,6 +509,38 @@
 			<section data-markdown data-separator-vertical="\n--\n">
 				<textarea data-template>
 
+                ### Typechecking in the dev workflow 
+
+                    
+                --
+
+                ```
+                tsc --watch
+                ``` 
+
+                Re-runs compiler when you save edits 
+                
+                (but can get real slow!)
+                
+                --
+
+                
+                ```json
+                "scripts" : {
+                    "test": "tsc --noEmit & vitest",
+                }
+                ```
+
+                If `tsc` fails, `vite build` won't run!
+            
+                    
+                </textarea>
+			</section>
+
+
+			<section data-markdown data-separator-vertical="\n--\n">
+				<textarea data-template>
+
 				### Back to our exercise!
 
 
@@ -542,7 +559,7 @@
 
 				## Step 4: Fix the code!
 
-				Add missing type info to `compileMe.ts` so that:
+				Declare the missing types in `compileMe.ts` so that:
 
 				- TS compiles without errors
 				- all tests pass

@@ -106,7 +106,7 @@
                 
                 --
 
-				This JS codebase has bugs!
+				This JS app has bugs!
 
 				Let's try to find & fix them with TS!
 
@@ -123,9 +123,42 @@
                 
                 --
 
-				### Install & run 
+				### Install & run the fullstack app
 
-                Follow the instructions in the README to install and run both the backend API and the frontend client app.
+                First, start the API server in one terminal:
+                ```zsh
+                cd backend
+                npm i
+                npm run dev
+                ```
+
+                Leave the dev server running at `localhost:3000`
+
+                --
+
+                Then, launch the frontend client in another terminal:
+
+                ```zsh
+                cd frontend
+                npm i
+                npm run dev
+                ```
+
+                You should now be able to access the UI at `localhost:5173`.
+
+                Poke around see if you notice any bugs
+                
+                --
+                
+
+                Run the frontend tests:
+
+                ```zsh
+                npm run test
+                ```
+
+                We have some work to do!
+
 
 				</textarea>
             </section>
@@ -151,8 +184,8 @@
                 - Install TS as a dev dependency
                 - Setup a `tsconfig.json`
 
-
                 --
+
 
 
                 ### Compilers & Configs & Choices, oh my!
@@ -189,117 +222,63 @@
                     }
                 }
                 ```
+                
 
+                
                                 
                 --
 
 
-                Browse the `tsconfig/bases` repo and pick out bases for each project: 
+                Browse the `tsconfig/bases` repo for more bases: 
                 
                 - `frontend` uses Vite & Vanilla JS
                 - `backend` uses Node & Express
 
 
-                
                 --
 
-				![Simpsons gif "I won't be needing this [green pen, only red]"](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDU5ajh5bGF4YXZ0YmRqZXF0amFhNzlueHF6ZWg4Mmw5dm0yeHl4eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6Mb65G4Xjv5j0VGw/giphy.webp)
-
-                
-                --
-
-
-                ### Squiggle alert!
-
-                Let's chip away at adding these missing types!
-
-
-                --
-
-
-                We can pass extra type definitions to the compiler by passing them in the `"types"` array in `tsconfig.json`
-
-                e.g. to tell TS to include Vite's types:
+                Extending multiple configs: 
 
                 ```json
-                "types": [
-                   "vite/client"
+                "extends": [
+                    "@tsconfig/recommended/tsconfig.json",
+                    "@tsconfig/vite-react/tsconfig.json"
                 ],
                 ```
 
 
                 --
 
-				### We need moar types!
+                Wondering what the resulting config looks like? 
 
-                [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) FTW!
-                
-                Community-maintained, npm-installable type declarations for many popular JS packages that don't ship their own
-
-                --
-
-                e.g. to install types for Node:
-
-                ```sh
-                npm i -D @types/node 
-                ```
-
-                --
-
-                ### Install all the types!
-
-                <!-- TODO meme -->
-
-                --
-
-                Install missing `@types/` packages as needed for project dependencies
-
-                `npm i -D @types/<packageName>`
-                
-                e.g. for `express`: `@types/express`
-
-                --
-
-
-                ### Type-only imports in `.ts` files
-
-                ```ts
-                import { Value, type ValueType } from 'values.ts';
-                ```
-
-                ```ts
-                import type { OneType, AnotherType } from 'types.js'
+                ```zsh
+                tsc --showconfig
                 ```
 
                 --
 
 
-                ### Exporting types for reuse
+                OK, let's check these types!
 
-
-                ```ts
-                // bananas.ts
-                export Banana = //...
+                ```zsh
+                tsc
                 ```
-
-                ```ts
-                // apples.ts
-                type Apple = //...
-
-                export { type Apple }
-                ```
-                <!-- TODO verify -->
 
                 --
 
-                ```ts
-                // fruits.ts
-                import type { Banana } from 'bananas';
-                import { Apple } from 'apples';
 
-                const fruit: Banana | Apple = //...
-                ```
-                
+                Start renaming files to `.ts`:
+
+                - `src/Events.js`
+                - `src/Header.js`
+                - `src/Forms.js`
+
+
+
+
+                <!-- TODO better gif
+                    ![Simpsons gif "I won't be needing this [green pen, only red]"](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDU5ajh5bGF4YXZ0YmRqZXF0amFhNzlueHF6ZWg4Mmw5dm0yeHl4eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6Mb65G4Xjv5j0VGw/giphy.webp) -->
+
 
 
 
@@ -310,44 +289,16 @@
                 ![Gif of a bug flying and being caught by a hand](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHk5NmdzMDg1bDR5NHdtNnc2eHFqdHJyaWp1b3Y3eHZ0MW04Y2R1cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/I3uGzDeKjm7J21MoRN/giphy.webp)
 
 
-				</textarea>
-            </section>
-
-
-
-            <section data-markdown data-separator-vertical="\n--\n">
-                <textarea data-template>
-
-                ### Typechecking in the dev workflow 
-
-                <!-- TODO gif/img -->
-                    
                 --
 
-                ```
-                tsc --watch
-                ``` 
+                ### Fix the frontend
 
-                Re-runs compiler when you save edits 
-                
-                (but can get real slow!)
-                
-                --
+                Declare & annotate types as needed
 
-                
-                ```json
-                "scripts" : {
-                    "build": "tsc & vite build",
-                }
-                ```
+                Squash the bugs that `tsc` and `vitest` reveal
 
-                If `tsc` fails, `vite build` won't run!
-            
-                    
                 </textarea>
             </section>
-
-            <!-- TODO transition -->
 
 
         </div>
