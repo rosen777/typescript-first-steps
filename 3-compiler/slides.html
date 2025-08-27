@@ -344,15 +344,6 @@
 
 				_disable these options if you want!_
 
-				--
-
-				### Rerun the tests
-
-				```zsh
-				npm run test
-				```
-
-				...now let's get them passing!
 
 				</textarea>
 			</section>
@@ -535,7 +526,17 @@
 
 				### Back to our exercise!
 
-				Let's get to work getting it to work!
+
+				-- 
+
+				## Update `test` script to check types first
+
+				```json
+				"scripts": {
+					"test": "tsc --noEmit && vitest",
+					"compile": "tsc"
+				},
+				```
 
 				--
 
@@ -543,8 +544,8 @@
 
 				Add missing type info to `compileMe.ts` so that:
 
-				- all tests pass
 				- TS compiles without errors
+				- all tests pass
 
 
 

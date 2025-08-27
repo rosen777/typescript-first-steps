@@ -24,9 +24,7 @@ Now, you can run the tests in `simple.test.js` with the command:
 npm run test
 ```
 
-We have some work to do to get these tests passing!
-
-For now we can exit the test runner. 
+Exit the test runner with CTRL+C. 
 
 ## Step 2: Setup TypeScript
 
@@ -64,8 +62,19 @@ Now try running `npm run compile` again.
 
 ## Step 4: Fix the code!
 
-Finally, we can get to work!
 
-Edit `compileMe.ts` to add the missing type declarations to fix the TS errors and get tests passing. 
+
+Let's make sure `tsc` is happy before we run tests. 
+
+Update the test command to run `tsc --noEmit` before running `vitest`:
+
+```json
+"scripts": {
+  "test": "tsc --noEmit && vitest",
+  "compile": "tsc"
+},
+```
+
+Edit `compileMe.ts` to add the missing type declarations to fix the TS errors. 
 
 Compare your solution to the reference in the `solution/` directory, keeping in mind that there may be other ways to fix these errors.
